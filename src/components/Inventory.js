@@ -1,17 +1,20 @@
 import React from "react";
 import Purse from "./Purse";
-import InventoryTile from "./InventoryTile";
+import PotionTile from "./PotionTile";
 
 function Inventory({ inventory, potions, sell, shake, stopShake, gold }) {
   const inventoryList = inventory.map((item) => {
     const potion = potions.find((potion) => potion.id === item.id);
 
     return (
-      <InventoryTile key={potion.id} potion={potion} sell={sell}>
-        <h4>
-          {potion.name} x {item.amount}
-        </h4>
-      </InventoryTile>
+      <PotionTile
+        key={potion.id}
+        className="card"
+        potion={potion}
+        onClick={sell}
+      >
+        <h4 className="potion-header">{potion.name}</h4>
+      </PotionTile>
     );
   });
 
